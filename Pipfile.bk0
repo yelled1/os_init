@@ -1,0 +1,53 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[requires]
+python_version = "3.7.3"
+
+[packages]
+pandas = "*"
+numpy = "*"
+sympy = "*"
+scipy = "*"
+scikit-learn = "*"
+pylatex = "*"
+python-dotenv = "*"
+tqdm = "*"
+argparse = "*"
+plotly = "*"
+
+pyreadline = "*"
+jupyterthemes = "*"
+
+[dev-packages]
+jupyter = "*"
+jupyterlab = "*"
+jupyter_kernel_gateway = "*"
+jupyter-contrib-nbextensions = "*"
+#jupyterlab_latex = "*"
+pylint = "*"
+"autopep8" = "*"
+pudb = "*"
+neovim = "*"
+
+[scripts]
+lint = "pylint --rcfile=../.pylintrc production"
+lint-fix = "autopep8 --in-place --aggressive --aggressive --recursive production utils dev ../schema"
+runprod = "python production/runprod.py"
+
+# for vim, latex, plotly, html
+#jupyter labextension install willprice/jupyterlab-vim
+#jupyter labextension install @jupyterlab/latex
+#jupyter labextension install @jupyterlab/plotly-extension
+#jupyter labextension install jupyterlab_bokeh
+#jupyter labextension install jupyterlab-drawio
+#jupyter labextension install @mflevine/jupyterlab_html
+
+#https://github.com/lambdalisue/jupyter-vim-binding
+## MUST follow nbextension dir + git pull above prior to below
+#jupyter nbextension enable vim_binding/vim_binding
+
+# jt -t monokai 
+# onedork | grade3 | oceans16 | chesterish | monokai | solarizedl | solarizedd
