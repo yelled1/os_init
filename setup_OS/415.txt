@@ -1,0 +1,1 @@
+sudo apt-get install -y --no-install-recommends nvidia-dkms-415 nvidia-kernel-source-415 libnvidia-decode-415 libnvidia-encode-415 nvidia-utils-415 xserver-xorg-video-nvidia-415 libnvidia-cfg1-415 libnvidia-ifr1-415 libnvidia-fbc1-415 

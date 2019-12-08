@@ -1,0 +1,75 @@
+  914  iw list |more
+  915  iw dev
+  916  sudo iw phy0 wowlan enable any
+  917  iw phy0 wowlan show
+  918  sudo iw phy0 wowlan enable magic-packet disconnect
+  919  sudo iw phy0 wowlan enable magic-packet
+  920  iw phy0 wowlan show
+  921  sudo vim /etc/rc.local
+  922  sudo vi /etc/rc.local
+  923  sudo chmod +x /etc/rc.local
+  924  sudo systemctl edit --full rc-local
+  925  ls
+  926  reboot
+  927  ls
+  928  ls -ltr
+  929  ifconfig
+  930  sudo ethtool wlx000f004c1101
+  931  iw phy0 wowlan show
+  932  iw
+  933  iw dev
+  934  iw phy0 wowlan show
+  935  sudo vi /etc/rc.local
+  936  cat /etc/rc.local
+  937  /sbin/iw
+  938  cat /etc/rc.local
+  939  sudo vi /etc/rc.local
+  940  sudo iw phy0 wowlan enable any
+  941  cat /etc/rc.local
+  942  reboot
+  947  sudo ethtool wlx000f004c1101
+  948  iw phy0 wowlan show
+  949  sudo ethtool wlx000f004c1101
+  950  aptuu
+  951  sudo apt install neovim
+  952  vi
+  953  ls
+  954  vi _apt-getCleanUp.sh 
+  955  cd ~/Prj/AmzTask/
+  956  ls
+  957  vi tf_test.py 
+
+ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  996  pyenv activate py3nvim
+  997  pip install sexpdata websocket-client
+
+
+sudo apt install build-essential cmake python3-dev
+cd ~/.local/share/nvim/site/plugged/YouCompleteMe$
+
+python3 install.py # --all
+pip install -e git+https://github.com/pypa/pipenv.git@master#egg=pipenv
+
+
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+# vi set_up13.sh 
+# sudo -E bash ./set_up13.sh 
+
+nodejs --version
+jupyter labextension install jupyterlab_vim
+jupyter labextension install  @jupyterlab/plotly-extension
+
+
+# How to run it
+
+jupyter lab --ip=0.0.0.0 --no-browser --port=8889
+jupyter notebook  --ip=0.0.0.0 --no-browser --port=8889
+jupyter kernelgateway --KernelGatewayApp.ip=0.0.0.0 --KernelGatewayApp.port=8888
+
+
+
+vi ~/.jupyter/jupyter_notebook_config.py # if this file is not there then
+jupyter notebook --generate-config
+& follow below
+https://jupyter-notebook.readthedocs.io/en/stable/public_server.html
+

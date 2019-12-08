@@ -1,0 +1,202 @@
+sudo bash ./dkms-install.sh 
+cd /media/hyoon/4E1A-C947/_Added/rtl8812au/
+sudo apt install ./r8168-dkms_8.047.04-1_all.deb 
+
+# Changing Machine name
+sudo vi /etc/hostname 
+sudo vi /etc/hosts
+sudo bash ./dkms-remove.sh clean
+
+# check if packages are solid
+   dpkg -C
+   sudo apt upgrade -f
+   sudo apt install aptitude
+   sudo aptitude
+
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+cd Downloads/
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt install gdebi
+sudo apt --fix-broken install
+
+sudo apt install openssh-server
+sudo systemctl restart sshd.service
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
+sudo chmod a-w /etc/ssh/sshd_config.original
+sudo vi /etc/ssh/sshd_config
+sudo systemctl restart sshd.service
+
+ssh-copy-id -p22461 hyoon@192.168.12.101
+100  ssh -p22460 hyoon@192.168.12.101
+
+ifconfig -a
+ip link show
+vi /etc/sysconfig/network-scripts/
+ls /etc/sysconfig
+
+sudo apt-get install vlc
+sudo apt install software-properties-common
+
+cat id_rsa
+cat id_rsa.pub 
+ssh-copy-id -p22460 hyoon@192.168.12.101
+
+vi /etc/sysconfig/network-scripts/
+sudo apt-get install ethtool 
+ip a
+sudo ethtool -s wlx000f004c1101 wol g
+
+sudo ethtool wlx000f004c1101
+sudo ethtool -s wlx000f004c1101 wol g
+
+vi mountit.py 
+sudo mount /dev/sda6 /media/hyoon/sda6 #UUID="99e03c11-5a36-494b-9097-0e2bf4054450" TYPE="ext4"
+sudo mount /dev/sdb2 /media/hyoon/sdb2 #UUID="efc3bd31-5716-4a2b-b733-4b92e62de666" TYPE="ext4"
+cp -p /media/hyoon/sdb2/home/hyoon/.bash_aliases .
+diff /media/hyoon/sdb2/home/hyoon/.bashrc  .bashrc
+
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> .bashrc
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> .bashrc
+echo $PYENV_ROOT
+vi .bash_aliases 
+vi .bashrc
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+pyenv install 3.7.5
+
+unzip  sources_list_d.zip 
+cp -i * /etc/apt/sources.list.d/
+sudo cp -i * /etc/apt/sources.list.d/
+
+sudo add-apt-repository ppa:webupd8team/y-ppa-manager
+sudo apt update
+sudo apt-get install y-ppa-manager
+y-ppa-manager
+
+
+cd /tmp
+pyenv local 
+pyenv local 3.7.5 
+pip install -U pipenv
+pip install --upgrade pip
+pip install --user --upgrade pipenv
+
+
+# Fix error?
+pip install -e git+https://github.com/pypa/pipenv.git@master#egg=pipenv
+
+
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo apt-get update
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt-get update
+
+lspci | grep -i nvidia
+uname -m && cat /etc/*release
+gcc -v
+sudo apt-get install linux-headers-$(uname -r)
+sudo apt-get install xclip
+# Copy ssh_rsa.pub to github settings
+cat ~/.ssh/id_rsa.pub
+git clone git@github.com:yelled1/AmzTask.git
+cd AmzTask/
+cat Pipfile
+vi Pipfile
+pyenv local 3.7.5
+pipenv install --dev
+pipenv shell
+vi Pipfile
+pipenv install tensorflow-gpu
+
+#https://www.tensorflow.org/install/gpu#install_cuda_with_apt
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
+
+#https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64
+
+# Add NVIDIA package repositories
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo apt-get update
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt-get update
+
+# Install NVIDIA driver
+sudo apt-get install --no-install-recommends nvidia-driver-418
+# Reboot. Check that GPUs are visible using the command: nvidia-smi
+
+# Install development and runtime libraries (~4GB)
+sudo apt-get install --no-install-recommends \
+    cuda-10-0 \
+    libcudnn7=7.6.2.24-1+cuda10.0  \
+    libcudnn7-dev=7.6.2.24-1+cuda10.0
+
+# Error 
+https://developer.nvidia.com/cuda-10.0-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1804&target_type=deblocal
+wget http://developer.download.nvidia.com/compute/cuda/10.0/Prod/patches/1/cuda-repo-ubuntu1804-10-0-local-nvjpeg-update-1_1.0-1_amd64.deb
+wget https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64
+
+sudo apt-get install freeglut3 freeglut3-dev libxi-dev libxmu-dev
+# Solved ? by
+#sudo apt-get install aptitude
+#sudo aptitude install cuda
+##REBOOT!!!!!
+
+apt clean; apt update; apt purge cuda; apt purge nvidia-*; apt autoremove; apt install cuda
+
+# THIS SHOULD BE 415
+sudo apt-get install -y --no-install-recommends nvidia-dkms-415 nvidia-kernel-source-415 libnvidia-decode-415 libnvidia-encode-415 nvidia-utils-415 xserver-xorg-video-nvidia-415 libnvidia-cfg1-415 libnvidia-ifr1-415 libnvidia-fbc1415
+sudo apt-get install -y --no-install-recommends libnvidia-compute-415
+sudo apt-get install -y --no-install-recommends nvidia-dkms-415 nvidia-kernel-source-415 libnvidia-decode-415 libnvidia-encode-415 nvidia-utils-415 xserver-xorg-video-nvidia-415 libnvidia-cfg1-415 libnvidia-ifr1-415 libnvidia-fbc1415
+sudo apt-get install -y --no-install-recommends nvidia-driver-415
+
+
+export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64:${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+echo $LD_LIBRARY_PATH
+
+sudo apt-get remove docker docker-engine docker.io containerd 
+sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+sudo apt-get update
+distribution=$"ubuntu18.04"
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+sudo systemctl restart docker
+
+docker ps
+sudo usermod -a -G docker $USER
+docker ps
+
+# Below will fail as NOT tf 2.0 code
+docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu    python -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
+docker run -it --rm tensorflow/tensorflow    python -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
+
+
+dpkg -l | grep "cuda-.*10-[1-2]" | awk '{print $2}'
+cuda-cudart-10-1
+hyoon@zSLI:/etc/apt/sources.list.d$ dpkg -l | grep "cuda-.*10-[1-2]" | awk '{print $2}'| xargs -n1 sudo dpkg --purge
+
+
+  ca-certificates-java cuda-command-line-tools-10-0 cuda-compiler-10-0 cuda-cufft-10-0 cuda-cufft-dev-10-0
+  cuda-cuobjdump-10-0 cuda-cupti-10-0 cuda-curand-10-0 cuda-curand-dev-10-0 cuda-cusolver-10-0 cuda-cusolver-dev-10-0
+  cuda-cusparse-10-0 cuda-cusparse-dev-10-0 cuda-documentation-10-0 cuda-gdb-10-0 cuda-gpu-library-advisor-10-0
+  cuda-libraries-10-0 cuda-libraries-dev-10-0 cuda-memcheck-10-0 cuda-misc-headers-10-0 cuda-npp-10-0
+  cuda-npp-dev-10-0 cuda-nsight-10-0 cuda-nsight-compute-10-0 cuda-nvcc-10-0 cuda-nvdisasm-10-0 cuda-nvgraph-10-0
+  cuda-nvgraph-dev-10-0 cuda-nvjpeg-10-0 cuda-nvjpeg-dev-10-0 cuda-nvml-dev-10-0 cuda-nvprof-10-0 cuda-nvprune-10-0
+  cuda-nvrtc-10-0 cuda-nvrtc-dev-10-0 cuda-nvtx-10-0 cuda-nvvp-10-0 cuda-samples-10-0 cuda-toolkit-10-0
+  cuda-tools-10-0 cuda-visual-tools-10-0 default-jre default-jre-headless fonts-dejavu-extra java-common
+  libatk-wrapper-java libatk-wrapper-java-jni libgif7 nvidia-modprobe openjdk-11-jre openjdk-11-jre-headless
+
+
+dpkg -l | grep "cuda" | awk '{print $2}'
+cuda-command-line-tools-10-0 cuda-compiler-10-0 cuda-cublas-10-0 cuda-cublas-dev-10-0 cuda-cudart-10-0 cuda-cudart-dev-10-0 cuda-cufft-10-0 cuda-cufft-dev-10-0 cuda-cuobjdump-10-0 cuda-cupti-10-0 cuda-curand-10-0 cuda-curand-dev-10-0 cuda-cusolver-10-0 cuda-cusolver-dev-10-0 cuda-cusparse-10-0 cuda-cusparse-dev-10-0 cuda-documentation-10-0 cuda-driver-dev-10-0 cuda-gdb-10-0 cuda-gpu-library-advisor-10-0 cuda-libraries-10-0 cuda-libraries-dev-10-0 cuda-license-10-0 cuda-memcheck-10-0 cuda-misc-headers-10-0 cuda-npp-10-0 cuda-npp-dev-10-0 cuda-nsight-10-0 cuda-nsight-compute-10-0 cuda-nvcc-10-0 cuda-nvdisasm-10-0 cuda-nvgraph-10-0 cuda-nvgraph-dev-10-0 cuda-nvjpeg-10-0 cuda-nvjpeg-dev-10-0 cuda-nvml-dev-10-0 cuda-nvprof-10-0 cuda-nvprune-10-0 cuda-nvrtc-10-0 cuda-nvrtc-dev-10-0 cuda-nvtx-10-0 cuda-nvvp-10-0 cuda-repo-ubuntu1804 cuda-repo-ubuntu1804-10-0-local-nvjpeg-update-1 cuda-samples-10-0 cuda-toolkit-10-0 cuda-tools-10-0 cuda-visual-tools-10-0 libcudnn7 libcudnn7-dev libnvinfer-dev libnvinfer5
