@@ -289,18 +289,18 @@ let g:deoplete#sources#jedi#show_docstring = 1
 if has("win32")
   set termencoding=utf8
   let g:python3_host_prog='C:/Bin/Miniconda3/python.exe'
-    let g:python2_host_prog = '/usr/bin/python2'
+  "let g:python2_host_prog = '/usr/bin/python2'
   let g:python_host_prog='C:/Bin/miniconda2/python.exe'
   nnoremap <silent> <leader>te :e ~/AppData/Local/nvim/init.vim<CR>
   nnoremap <silent> <leader>tev :e E:/Bin/gVimPortable/App/vim<CR>
 elseif has("unix")
   if has('mac')
-    let g:python2_host_prog = expand('$HOME') . '/.pyenv/versions/2.7.15/bin/python'
+    let g:python_host_prog = expand('$HOME') . '/.pyenv/versions/2.7.15/bin/python'
     let g:python2_host_prog = expand('$HOME') . '/.pyenv/versions/3.7.3/bin/python'
   else
     "let g:python2_host_prog = '/usr/bin/python2'
     "let g:python2_host_prog = expand('$HOME') . '/.pyenv/versions/2.7.17/bin/python'
-    let g:python2_host_prog = expand('$HOME') . '/.pyenv/versions/py2nvim/bin/python'
+    let g:python_host_prog = expand('$HOME') . '/.pyenv/versions/py2nvim/bin/python'
     let g:python3_host_prog = expand('$HOME') . '/.pyenv/versions/py3nvim/bin/python'
     " always do a checkhealth
     " https://neovim.io/doc/user/provider.html - look at pyenv for py3nvim
