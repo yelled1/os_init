@@ -69,9 +69,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "Plug 'vim-syntastic/syntastic'
 "Plug 'Raimondi/delimitMate'
-"klug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+
+"https://github.com/mattn/vim-lsp-settings
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 "Plug 'Shougo/neco-vim'
 "Plug 'JuliaEditorSupport/deoplete-julia' "Depreciated for LanguageClient
 "Plug 'JuliaEditorgitSupport/julia-vim'
@@ -95,6 +103,39 @@ call plug#end()
 "*** Reload .vimrc and :PlugInstall to install plugins. <<<<<
 "*** for nvim :UpdateRemotePlugins as well
 "--- for YCM compile YCMd by install.py in Plugin Directory ---!!!
+"
+"___ vim-lsp __________________________________________________
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+"if executable('pyls')
+"    " pip install python-language-server
+""    au User lsp_setup call lsp#register_server({
+"        \ 'name': 'pyls',
+"        \ 'cmd': {server_info->['pyls']},
+"        \ 'whitelist': ['python'],
+"        \ })
+"endif
+"
+"function! s:on_lsp_buffer_enabled() abort
+"    setlocal omnifunc=lsp#complete
+"    setlocal signcolumn=yes
+"    nmap <buffer> gd <plug>(lsp-definition)
+"    nmap <buffer> <f2> <plug>(lsp-rename)
+"    " refer to doc to add more commands
+"endfunction
+"
+"augroup lsp_install
+"    au!
+"    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+"    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+"augroup END
+
+" Tab completion for asyncomplete vim
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+"Force refresh completion
+imap <c-space> <Plug>(asyncomplete_force_refresh)
 
 "___ keyMaps for copy __________________________________________________
 "apt install xclip
@@ -227,7 +268,7 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.scala, *.jl
 " deopltete Section 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:deoplete#omni#input_patterns = {}
@@ -239,7 +280,7 @@ let g:deoplete#omni#input_patterns.scala = [
   \ '^import .*'
   \]
 "let g:deoplete#omni#input_patterns.python = '' 
-let g:deoplete#sources#jedi#server_timeout = 60
+let g:deoplete#sources#jedi#server_timeout = 160
 let g:deoplete#sources#jedi#show_docstring = 1 
 "let g:deoplete#sources#jedi#python_path = '/opt/miniconda3/envs/SPk/bin/python'
 "g:deoplete#sources#jedi#python_path 

@@ -1,0 +1,62 @@
+sudo apt install software-properties-common
+
+cp -p /media/hyoon/sdb2/home/hyoon/.bash_aliases .
+diff /media/hyoon/sdb2/home/hyoon/.bashrc  .bashrc
+
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> .bashrc
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> .bashrc
+echo $PYENV_ROOT
+
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+pyenv install 3.7.5
+pyenv install 2.7.17
+
+cd /tmp
+pyenv local 3.7.5 
+pip install -U pipenv
+pip install --upgrade pip
+pip install --user --upgrade pipenv
+
+# Fix error?
+pip install -e git+https://github.com/pypa/pipenv.git@master#egg=pipenv
+
+sudo apt-get install linux-headers-$(uname -r)
+sudo apt-get install xclip
+# Copy ssh_rsa.pub to github settings
+pipenv install tensorflow-gpu
+
+#https://www.tensorflow.org/install/gpu#install_cuda_with_apt
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
+
+#https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1804-10-0-local-10.0.130-410.48_1.0-1_amd64
+
+sudo apt-get install freeglut3 freeglut3-dev libxi-dev libxmu-dev
+
+sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt-get update
+distribution=$"ubuntu18.04"
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+sudo systemctl restart docker
+
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+pip install sexpdata websocket-client
+
+sudo apt install build-essential cmake python3-dev
+cd ~/.local/share/nvim/site/plugged/YouCompleteMe$
+
+python3 install.py # --all
+pip install -e git+https://github.com/pypa/pipenv.git@master#egg=pipenv
+
+
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+# vi set_up13.sh 
+# sudo -E bash ./set_up13.sh 
+
+nodejs --version
+jupyter labextension install jupyterlab_vim
+jupyter labextension install  @jupyterlab/plotly-extension
