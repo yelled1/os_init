@@ -47,7 +47,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 pip install sexpdata websocket-client
 
 sudo apt install build-essential cmake python3-dev
-cd ~/.local/share/nvim/site/plugged/YouCompleteMe$
+cd ~/.local/share/nvim/site/plugged/YouCompleteMe
 
 python3 install.py # --all
 pip install -e git+https://github.com/pypa/pipenv.git@master#egg=pipenv
