@@ -1,4 +1,3 @@
-"!!!!!!!!! ALWAYS :checkhealth !!!!!!!!!!!!!!!!!!!!!!!!!
 let mapleader = ","
 "let mapleader="\<SPACE>"
 
@@ -13,18 +12,58 @@ au BufRead,BufNewFile *.h       set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 
 " -----------------------------------------------------------------------
+"  https://www.youtube.com/watch?v=XA2WjJbmmoM
+syntax enable
+" Finding files
+" tab-completion for all file-related tasks 
+" ** is subdir of subdir deep & += appends existing
+set path+=**
+" Display all matching files when we tab complete
+set wildmenu
+
+" TAG JUMPING Create the 'tags`
+" Also look at https://linuxhint.com/vim_ctags/
+" http://www.held.org.il/blog/2011/02/configuring-ctags-for-python-and-vim/
+command! MakeTags !ctags -R .
+set tags=./tags,tags;$HOME
+"set tags+=$HOME/tags
+map <C-[> <C-T> 
+" - ^] to jump to tag under cursor
+" - g^] for ambguous tags
+" - Ctrl-[ is easier: was ^t jump back to the tag stack 
+
+" setup for tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" -----------------------------------------------------------------------
+"__Kite:________________________________________________________________
+let g:kite_auto_complete=1
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2
+
+let g:kite_tab_complete=1
+" Unnecessary as capital K works for me
+"nmap <silent> <buffer> gK <Plug>(kite-docs) 
+let g:kite_supported_languages = ['python', 'go']
+
+"set completeopt+=preview
+"To have the preview window automatically closed once a completion has been inserted:
+"autocmd CompleteDone * if !pumvisible() | pclose | endif
+set belloff+=ctrlg  " if vim beeps during completion
+
+" -----------------------------------------------------------------------
 " Syntax and indent
 " -----------------------------------------------------------------------
-syntax on   		" syntax highlighting turn it on
+"syntax on   		" syntax highlighting turn it on
 scriptencoding utf8
 set encoding=utf-8
-"set showmatch "Show matching bracets when text indicator is over them
+set showmatch "Show matching bracets when text indicator is over them
 let g:loaded_matchparen=1
 set hls       " highlight search
 set lbr       " linebreak
 set expandtab       " enter spaces when tab is pressed
-set softtabstop=2   " Use 2 space instead of tab during format
-set shiftwidth=2    " number of spaces to use for auto indent
+set softtabstop=4   " Use 2 space instead of tab during format
+set shiftwidth=4    " number of spaces to use for auto indent
 "set textwidth=120   " break lines when line length increases
 "set tabstop=4       " use 4 spaces to represent tab
 set autoindent      " Copy indent from the row above
@@ -40,14 +79,13 @@ set backspace=indent,eol,start  " make backspaces more powerful
 set ruler                       " show line and column number
 set number                      " show line and column number
 set showcmd 		                " show (partial) command in status line
-"_______________________________________________________________________
+"__Colors_______________________________________________________________
 "let g:molokai_original = 1
 "let g:rehash256 = 1
 ":color distinguished
 :color molokai
 ""set colorscheme = "one"(one is the name of color scheme)
 "if exists('g:nyaovim_version')
-"  syntax enable
 "  colorscheme impact3
 "  set background=dark
 "  let g:solarized_termcolors=256
@@ -61,20 +99,17 @@ set showcmd 		                " show (partial) command in status line
 "call plug#begin('~/.vim/plugged') This was For old vim 
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'ahw/vim-pbcopy'
-Plug 'bfredl/nvim-ipy'
+"Plug 'bfredl/nvim-ipy'
 Plug 'Vigemus/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'w0rp/ale' " Async pyLint
 Plug 'derekwyatt/vim-scala'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
 "Plug 'vim-syntastic/syntastic'
-Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'Raimondi/delimitMate'
 "Plug 'Valloric/YouCompleteMe'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-jedi'
 "Plug 'Shougo/neco-vim'
-"Plug 'JuliaEditorSupport/deoplete-julia' "Depreciated for LanguageClient
 "Plug 'JuliaEditorgitSupport/julia-vim'
 "Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'roxma/nvim-completion-manager'
@@ -225,73 +260,12 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.scala, *.jl
     \ set shiftwidth=2
 
 "_______________________________________________________________________
-" deopltete Section 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:deoplete#omni#input_patterns = {}
-" below is alt web init.vim
-"let g:deoplete#omni#input_patterns = get(g:, 'deoplete#omni#input_patterns',{})
-let g:deoplete#omni#input_patterns.scala = [
-  \ '[^. *\t]\.\w*',
-  \ '[:\[,] ?\w*',
-  \ '^import .*'
-  \]
-"let g:deoplete#omni#input_patterns.python = '' 
-let g:deoplete#sources#jedi#server_timeout = 60
-let g:deoplete#sources#jedi#show_docstring = 1 
-"let g:deoplete#sources#jedi#python_path = '/opt/miniconda3/envs/SPk/bin/python'
-"g:deoplete#sources#jedi#python_path 
-""Set the Python interpreter path to use for the completion server. deoplete-jedi uses the first available python in $PATH. Use this only if you want use a specific Python interpreter. This has no effect if $VIRTUAL_ENV is present in the environment. Note: This is completely unrelated to configuring Neovim.
-"g:deoplete#sources#jedi#debug_server 
-""Enable logging from the server. If set to 1, server messages are emitted to Deoplete's log file. This can optionally be a string that points to a file for separate logging. The log level will be inherited from deoplete#enable_logging().
-"g:deoplete#sources#jedi#extra_path
-"" A list of extra paths to add to sys.path when performing completions.
-
-" julia deopltete Section 
-"_______________________________________________________________________
-" https://github.com/JuliaEditorSupport/LanguageServer.jl/wiki/Neovim
-"let g:default_julia_version = '0.6'
-" language server
-"let g:LanguageClient_autoStart = 1
-"
-"if has("win32")
-"  let g:LanguageClient_serverCommands = {
-"  \   'julia': ['C:/tools/Julia/bin/julia.exe', '--startup-file=no', '--history-file=no', '-e', '
-"  \       using LanguageServer;
-"  \       server = LanguageServer.LanguageServerInstance(STDIN, STDOUT, false);
-"  \       server.runlinter = false;
-"  \       run(server);
-"  \   '],
-"  \ }
-"else
-"  let g:LanguageClient_serverCommands = {
-"  \   'julia': ['/opt/julia/bin/julia', '--startup-file=no', '--history-file=no', '-e', '
-"  \       using LanguageServer;
-"  \       server = LanguageServer.LanguageServerInstance(STDIN, STDOUT, false);
-"  \       server.runlinter = false;
-"  \       run(server);
-"  \   '],
-"  \ }
-"endif
-
-"=== Get LanguageClientStart error
-"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-"_______________________________________________________________________
-"let g:ycm_autoclose_preview_window_after_completion=1 
-"" THIS SEEM TO mess w/ TAB COMPLETION
-""map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"_______________________________________________________________________
-if has("win32")
+if has("win64")
   set termencoding=utf8
-  let g:python_host_prog='C:/Bin/miniconda2/python.exe'
-  let g:python3_host_prog='C:/Bin/Miniconda3/python.exe'
+  let g:python_host_prog = expand('$HOME') . '\.pyenv\pyenv-win\versions\py2nvim\Scripts\python.exe' 
+  let g:python3_host_prog= expand('$HOME') . '\.pyenv\pyenv-win\versions\py3nvim\Scripts\python.exe'
   nnoremap <silent> <leader>te :e ~/AppData/Local/nvim/init.vim<CR>
-  nnoremap <silent> <leader>tev :e E:/Bin/gVimPortable/App/vim<CR>
+  "nnoremap <silent> <leader>tev :e E:/Bin/gVimPortable/App/vim<CR>
 elseif has("unix")
   if has('mac')
     let g:python_host_prog = expand('$HOME') . '/.pyenv/versions/2.7.15/bin/python'
@@ -330,8 +304,8 @@ let $BROWSER = '/usr/bin/epiphany %s'
 "Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 "let g:powerline_pycmd="py3"
 "___________________________________________________________
-filetype plugin indent on
 filetype on
+filetype plugin indent on
 au VimEnter,BufRead,BufNewFile *.jl set filetype=julia
 au VimEnter,BufRead,BufNewFile *.scala set filetype=scala
 au VimEnter,BufRead,BufNewFile *.py set filetype=python
