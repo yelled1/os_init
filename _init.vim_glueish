@@ -1,6 +1,5 @@
 let mapleader = ","
 "let mapleader="\<SPACE>"
-
 ":h CTRL-W    ":get help on this key combo
 ":map <C-x>o  ":find the action or map of this key combo
 
@@ -21,22 +20,20 @@ set path+=**
 " Display all matching files when we tab complete
 set wildmenu
 
-" TAG JUMPING Create the 'tags`
+" TAG JUMPING Create the 'tags`____________________________________________
 " Also look at https://linuxhint.com/vim_ctags/
 " http://www.held.org.il/blog/2011/02/configuring-ctags-for-python-and-vim/
 command! MakeTags !ctags -f $HOME/Prj/tags --languages=Python -R $HOME/Prj
 set tags=./tags,tags;$HOME;$HOME/Prj
 "set tags+=$HOME/tags
-map <C-[> <C-T> 
+"map <C-[> <C-T>  " can't do it as this starts VIM in REPLACE mode
 " - ^] to jump to tag under cursor
 " - g^] for ambguous tags
-" - Ctrl-[ is easier: was ^t jump back to the tag stack 
 
 " setup for tagbar
 nmap <F8> :TagbarToggle<CR>
-
 " -----------------------------------------------------------------------
-"__Kite:________________________________________________________________
+"__Kite:____________________________________________________________________
 let g:kite_auto_complete=1
 set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
@@ -68,7 +65,7 @@ set shiftwidth=4    " number of spaces to use for auto indent
 "set tabstop=4       " use 4 spaces to represent tab
 set autoindent      " Copy indent from the row above
 set si              " Smart indent
-set mouse=a         " Enable the use of the mouse.
+set mouse-=a         " Enable the use of the mouse.
 set wildmenu
 set nocompatible    "Not vi compativle (Vim is king)
 set guicursor=      " to prevent funny characters !!!!!!!##########
@@ -147,8 +144,8 @@ vnoremap <C-c> "+y
 " deactivate default mappings
 "~/.local/share/nvim/site/plugged/iron.nvim/lua/iron/fts/init.lua
 "let g:iron_repl_open_cmd = 'hsplit'
-lua require("iron").core.set_config{repl_open_cmd = 'rightbelow 10 split'}
-"lua require("iron").core.set_config{repl_open_cmd = 'topleft vertical 80 split'}
+"lua require("iron").core.set_config{repl_open_cmd = 'rightbelow 10 split'}
+lua require("iron").core.set_config{repl_open_cmd = 'topleft vertical 80 split'}
 let g:iron_map_defaults=0
 "' <1> Add if True:\n in visual selection execution?
 "' <2> after visual exec scroll to end of selection
@@ -246,18 +243,18 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 map <C-\> :NERDTreeToggle<CR>
 
 au BufNewFile,BufRead *.py
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix
 
 au BufNewFile,BufRead *.js, *.html, *.css, *.scala, *.jl
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4
 
 "_______________________________________________________________________
 if has("win64")
