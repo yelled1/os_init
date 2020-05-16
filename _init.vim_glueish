@@ -172,7 +172,8 @@ inoremap <C-`> <C-O><C-W>w
 tnoremap <C-`> <c-\><c-n><c-w><c-w>
 noremap <C-x>o <C-W>w
 inoremap <C-x>o <C-O><C-W>w
-tnoremap <C-x>o <c-\><c-n><c-w><c-w>
+tnoremap <c-x>o <C-W>w
+"tnoremap <C-x>o <c-\><c-n><c-w><c-w>
 "_______________________________________________________________________
 ""map <F5> :bnext<CR> " Currently MAP to :bn
 ""<NL> in LXterm NOT C-CR,Enter,Return

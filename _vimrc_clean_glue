@@ -129,7 +129,8 @@ inoremap <c-`> <c-o><c-w>w
 tnoremap <c-`> <c-\><c-n><c-w><c-w>
 noremap <c-x>o <c-w>w
 inoremap <c-x>o <c-o><c-w>w
-tnoremap <c-x>o <c-\><c-n><c-w><c-w>
+tnoremap <c-x>o <C-w>w
+"tnoremap <c-x>o <c-\><c-n><c-w><c-w>
 "_______________________________________________________________________
 " enable folding
 set foldmethod=indent
@@ -168,7 +169,7 @@ filetype plugin indent on
 au vimenter,bufread,bufnewfile *.jl set filetype=julia
 au vimenter,bufread,bufnewfile *.scala set filetype=scala
 au vimenter,bufread,bufnewfile *.py set filetype=python
-au bufread,bufnewfile *.py,*.pyw,*.c,*.h match badwhitespace /\s\+$/
+"au bufread,bufnewfile *.py,*.pyw,*.c,*.h match badwhitespace /\s\+$/
 
 "___Window Cmds________________________________________________________
 ""<C-w>n - :new horizontal split (editing a new empty buffer)
