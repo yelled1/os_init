@@ -66,7 +66,7 @@ let g:NERDTreeGitStatusNodeColorization = 1
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " run prettier on save
 "let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 
 " ctrlp
@@ -109,7 +109,7 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
-au BufNewFile,BufRead *.js, *.html, *.css, *.scala, *.jl
+au BufNewFile,BufRead *.js,*.html,*.css,*.scala,*.jl
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
