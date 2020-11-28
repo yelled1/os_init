@@ -1,0 +1,33 @@
+.idea/
+*.class
+*.log
+
+# sbt specific
+.cache
+.cache-main
+.history
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+build/
+
+.bloop/
+.metals/
+.coursier/
+out/
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+
+# (may want to keep parts of 'project')
+# # other?
+bin/
+.history
+
+#general
+# *.class
