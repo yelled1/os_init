@@ -1,0 +1,63 @@
+// Save the file to ~/.vim/coc-extensions
+// Usage: xmap <silent> <TAB> <Plug>(coc-repl-sendtext)
+const {commands, workspace} = require('coc.nvim')
+//const logger =  require('./util/logger')('workspace')
+
+exports.activate = context => {
+  let {nvim} = workspace
+  let terminal
+  context.subscriptions.push(commands.registerCommand('repl.openTerminal', async () => {
+    let filetype = await nvim.eval('&filetype')
+    let doc = workspace.getDocument(workspace.bufnr)
+    let prog = ''
+    if (filetype == 'javascript') {
+      prog = 'node'
+    } else if (filetype == 'typescript') {
+      prog = 'ts-node'
+    } else if (filetype == 'scala') {
+      var splt = doc._uri.split('/').reverse()
+      if (splt[1] == 'scala') prog = 'sbt console' 
+      else prog = 'mill -i ' + splt[2] + '.console'
+    }
+    terminal = await workspace.createTerminal({
+      name: prog || 'terminal'
+    })
+    if (prog) {
+      let winid = await nvim.call('win_getid')
+      /* console.warn('prog-----')
+         console.warn(splt[1], prog)
+         console.warn(winid)
+         console.warn(nvim.nvim_get_current_win) */
+         terminal.sendText(prog, true)
+      nvim.call('win_gotoid', winid, true)
+    }
+  }))
+  context.subscriptions.push(commands.registerCommand('repl.showTerminal', async () => {
+    if (terminal) {
+      terminal.show()
+    }
+  }))
+  context.subscriptions.push(commands.registerCommand('repl.disposeTerminal', async () => {
+    if (terminal) {
+      terminal.dispose()
+    }
+  }))
+
+  //context.subscriptions.push(workspace.registerKeymap(['x'], 'repl-sendtext', async () => {
+  context.subscriptions.push(commands.registerCommand('repl.sendtext', async () => {
+    //await nvim.call('eval', 'feedkeys("\\<esc>", "in")')
+    //if !(terminal) repl.openTerminal
+    let winid = await nvim.call('win_getid')
+    let filetype = await nvim.eval('&filetype')
+    let doc = workspace.getDocument(workspace.bufnr)
+    if (!doc) return
+    let visualmode = await nvim.call('visualmode')
+    let range = await workspace.getSelectedRange(visualmode, doc)
+    if (!range) return
+    var text = doc.textDocument.getText(range)
+    if (filetype == 'scala' && text.substring(0, text.length -1).includes('\n'))
+      text = ':paste\n' + text + '\04'
+    if (text && terminal) terminal.sendText(text, true)
+    nvim.call('win_gotoid', winid, true)
+  }, {sync: false, silent: true}))
+}
