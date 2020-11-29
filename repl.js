@@ -8,11 +8,9 @@
 		autocmd FileType scala nnoremap <localeader>r :CocCommand repl.disposeTerminal<CR>
 
 	Need to wait before sending chunks of code ~ need it to wait
-  Make it goto end of visual NOT next line: Mark in vim & move to the mark?
-	console vs repl
-  const logger =  require('./util/logger')('workspace')
-
+  //const logger =  require('./util/logger')('workspace')
 */
+
 const {commands, workspace} = require('coc.nvim')
 
 function multln(str) {
