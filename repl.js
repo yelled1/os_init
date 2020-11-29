@@ -40,9 +40,6 @@ exports.activate = context => {
 		})
 		if (prog) {
 			let winid = await nvim.call('win_getid')
-			/* console.warn('prog-----')
-				 console.warn(splt[1], prog, winid)
-				 console.warn(nvim.nvim_get_current_win) */
 			terminal.sendText(prog, true)
 			nvim.call('win_gotoid', winid, true)
 		}
