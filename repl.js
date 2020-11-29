@@ -6,6 +6,7 @@
 		autocmd Filetype scala nmap <localleader>\ 0v$:CocCommand repl.sendtext<CR>j
 		autocmd FileType scala nnoremap <leader>r :CocCommand repl.openTerminal<CR>
 		autocmd FileType scala nnoremap <localeader>r :CocCommand repl.disposeTerminal<CR>
+	customization at both ends	
 
 	Need to wait before sending chunks of code ~ need it to wait
   //const logger =  require('./util/logger')('workspace')
@@ -17,7 +18,7 @@ function multln(str) {
 			if (str.substring(0, str.length -1).includes('\n') ||
 					str.substring(0, str.length -1).includes('\r') ) return true
 			else return false
-		}
+}
   
 exports.activate = context => {
   let {nvim} = workspace
@@ -60,8 +61,7 @@ exports.activate = context => {
   //context.subscriptions.push(workspace.registerKeymap(['x'], 'repl-sendtext', async () => {
   context.subscriptions.push(commands.registerCommand('repl.sendtext', async () => {
     //await nvim.call('eval', 'feedkeys("\\<esc>", "in")')
-    //if !(terminal) repl.openTerminal
-  let winid = await nvim.call('win_getid')
+		let winid = await nvim.call('win_getid')
     let filetype = await nvim.eval('&filetype')
     let doc = workspace.getDocument(workspace.bufnr)
     if (!doc) return

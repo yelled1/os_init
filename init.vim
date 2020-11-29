@@ -293,9 +293,13 @@ autocmd FileType json syntax match Comment +\/\/.\+$+ "Not sure this is from sil
 autocmd FileType python nnoremap <leader>l :CocCommand python.upgradePythonLanguageServer<Cr>
 autocmd FileType python nnoremap <leader>r :CocCommand python.startREPL<CR>
 "autocmd FileType python nnoremap <localeader>r :CocCommand python.stopREPL<CR>
-autocmd FileType python vmap <localleader>\ :CocCommand python.execSelectionInTerminal<Cr> 
+autocmd FileType python vmap <localleader>\ mY:CocCommand python.execSelectionInTerminal<Cr>'Yj
 autocmd Filetype python imap <localleader>\ <Esc>0v$:CocCommand python.execSelectionInTerminal<Cr>
 autocmd Filetype python nmap <localleader>\ 0v$:CocCommand python.execSelectionInTerminal<Cr>
+
+autocmd FileType python vmap <S_CR> :CocCommand python.execSelectionInTerminal<Cr> 
+autocmd Filetype python imap <S_CR> <Esc>0v$:CocCommand python.execSelectionInTerminal<Cr>
+autocmd Filetype python nmap <S_CR> 0v$:CocCommand python.execSelectionInTerminal<Cr>
 ":'<,'>CocCommand python.execSelectionInTerminal
 
 "tnoremap <C-n> <C-w>N
@@ -309,6 +313,10 @@ tnoremap <ScrollWheelDown> <C-w>Nj
 "let mill_rep = $HOME . '/bin/mill_repl.sh'
 "let g:neoterm_repl_scala = $HOME . '/bin/mill_repl.sh' . ' console'
 "autocmd FileType scala xmap <silent> <localleader>\ <Plug>(coc-repl-sendtext) 
+autocmd FileType scala vmap <silent> <S-CR> mY:CocCommand repl.sendtext<CR>'Yj
+autocmd Filetype scala imap <S-CR> <Esc>0v$:CocCommand repl.sendtext<CR>j
+autocmd Filetype scala nmap <S-CR> 0v$:CocCommand repl.sendtext<CR>j
+
 autocmd FileType scala vmap <silent> <localleader>\ m0:CocCommand repl.sendtext<CR>'0j
 autocmd Filetype scala imap <localleader>\ <Esc>0v$:CocCommand repl.sendtext<CR>j
 autocmd Filetype scala nmap <localleader>\ 0v$:CocCommand repl.sendtext<CR>j
