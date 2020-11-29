@@ -64,7 +64,7 @@ let g:NERDTreeGitStatusNodeColorization = 1
 "let g:prettier#quickfix_auto_focus = 0
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" run prettier on save
+run prettier on save
 "let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
@@ -88,7 +88,7 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 set cindent
 set shiftwidth=2
 
-au BufRead,BufNewFile *.scala   set noexpandtab
+au BufRead,BufNewFile *.scala   set expandtab
 au BufRead,BufNewFile *.py      set expandtab
 au BufRead,BufNewFile *.c       set noexpandtab
 au BufRead,BufNewFile *.h       set noexpandtab
@@ -288,10 +288,11 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 "___ keyMaps for coc-python ____________________________________________
 autocmd FileType json syntax match Comment +\/\/.\+$+ "Not sure this is from sillybun
 
-"let mill_rep = $HOME . '/bin/mill_repl.sh'
 "autocmd FileType python noremap <localleader>\ : CocCommand python.execSelectionInTerminal<Cr> 
 "autocmd FileType python map <localleader>\ :<,'> CocCommand python.execSelectionInTerminal<Cr>
-autocmd FileType python nnoremap <leader>r :CocCommand python.upgradePythonLanguageServer<Cr>
+autocmd FileType python nnoremap <leader>l :CocCommand python.upgradePythonLanguageServer<Cr>
+autocmd FileType python nnoremap <leader>r :CocCommand python.startREPL<CR>
+"autocmd FileType python nnoremap <localeader>r :CocCommand python.stopREPL<CR>
 autocmd FileType python vmap <localleader>\ :CocCommand python.execSelectionInTerminal<Cr> 
 autocmd Filetype python imap <localleader>\ <Esc>0v$:CocCommand python.execSelectionInTerminal<Cr>
 autocmd Filetype python nmap <localleader>\ 0v$:CocCommand python.execSelectionInTerminal<Cr>
@@ -305,12 +306,14 @@ tnoremap <ScrollWheelDown> <C-w>Nj
 "_______________________________________________________________________
 " Repl.js in $VIMCONFIG/coc-extensions/
 
+"let mill_rep = $HOME . '/bin/mill_repl.sh'
 "let g:neoterm_repl_scala = $HOME . '/bin/mill_repl.sh' . ' console'
 "autocmd FileType scala xmap <silent> <localleader>\ <Plug>(coc-repl-sendtext) 
-autocmd FileType scala vmap <silent> <localleader>\ :CocCommand repl.sendtext<CR>
-autocmd Filetype scala imap <localleader>\ <Esc>0v$:CocCommand repl.sendtext<CR>
-autocmd Filetype scala nmap <localleader>\ 0v$:CocCommand repl.sendtext<CR>
+autocmd FileType scala vmap <silent> <localleader>\ m0:CocCommand repl.sendtext<CR>'0j
+autocmd Filetype scala imap <localleader>\ <Esc>0v$:CocCommand repl.sendtext<CR>j
+autocmd Filetype scala nmap <localleader>\ 0v$:CocCommand repl.sendtext<CR>j
 autocmd FileType scala nnoremap <leader>r :CocCommand repl.openTerminal<CR>
+autocmd FileType scala nnoremap <localeader>r :CocCommand repl.disposeTerminal<CR>
 
 "luafile $HOME/.config/nvim/plugins.lua
 "___ keyMaps ___________________________________________________________
