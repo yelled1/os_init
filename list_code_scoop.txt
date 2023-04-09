@@ -1,0 +1,58 @@
+Name             Version          Source   Updated             Info
+----             -------          ------   -------             ----
+7zip             22.01            main     2022-10-26 18:09:15
+ccleaner         6.0.8            extras   2023-02-02 10:53:12
+Cmder-full       1.3.21           main     2023-02-02 10:53:49
+dark             3.11.2           main     2020-03-14 12:37:01
+dbeaver          22.3.4           extras   2023-02-05 15:59:28
+git              2.39.1.windows.1 main     2023-02-02 10:54:49
+lessmsi          1.10.0           main     2022-10-26 18:19:50
+neovim           0.8.3            main     2023-02-05 15:59:57
+nodejs           19.6.0           main     2023-02-05 16:00:30
+oraclejdk        19.0.2           java     2023-02-02 10:56:26
+rufus            3.21             extras   2023-02-02 10:56:32
+scala2           2.13.8           versions 2023-02-02 10:49:48
+terminus         1.0.111          extras   2020-05-17 09:34:49
+vscode           1.75.0           extras   2023-02-05 16:01:04
+windirstat       1.1.2            extras   2020-03-14 20:32:52
+windows-terminal 1.15.2874.0      extras   2022-10-26 18:01:02
+
+λ code --list-extensions
+alssys.interactive-scala
+amazonwebservices.aws-toolkit-vscode
+brunoventura.sqltools-athena-driver
+christian-kohler.path-intellisense
+GitHub.copilot
+GitHub.vscode-pull-request-github
+jeff-hykin.macro-commander
+KevinRose.vsc-python-indent
+koszti.snowflake-driver-for-sqltools
+mkloubert.vscode-deploy-reloaded
+ms-python.black-formatter
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+ms-toolsai.vscode-jupyter-cell-tags
+ms-vscode-remote.remote-containers
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
+ms-vscode-remote.remote-wsl
+ms-vscode-remote.vscode-remote-extensionpack
+ms-vscode.remote-explorer
+ms-vscode.remote-server
+mtxr.sqltools
+mziyabo.vscode-codedeploy
+paiqo.databricks-vscode
+PKief.material-icon-theme
+RandomFractalsInc.vscode-data-table
+sadeghpm.sql-snippets
+scala-lang.scala
+scala-lang.scala-snippets
+scalameta.metals
+VisualStudioExptTeam.intellicode-api-usage-examples
+VisualStudioExptTeam.vscodeintellicode
+vscode-aws-console.vscode-aws-console
+vscodevim.vim
+wraith13.unsaved-files-vscode
