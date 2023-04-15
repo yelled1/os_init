@@ -1,0 +1,33 @@
+https://stackoverflow.com/questions/56839307/adding-git-bash-to-the-new-windows-terminal
+%USERPROFILE%/scoop/apps/git/current/usr/share/git/git-for-windows.ico
+%USERPROFILE%/scoop/shims/bash.exe -i -l
+
+https://github.com/junegunn/vim-plug
+call plug#begin('~/.local/share/nvim/site/plugged')
+"Plug 'neoclide/coc.nvim', {'commit': 'e7d5d35980868fc0a9dd1eb30f1165c111346e60'}   " do CocInstall coc-metals, coc-python
+Plug 'github/copilot.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}          " do CocInstall coc-metals, coc-python
+Plug 'yelled1/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'joshdick/onedark.vim'                              " Color Theme
+Plug 'liuchengxu/vista.vim'                              " Show cTags
+Plug 'itchyny/lightline.vim'                             " status tabline bottom
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'                            " adds icons in nerdtree
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'                                " fuzzy find files
+Plug 'scrooloose/nerdcommenter'
+"Plug 'tsony-tsonev/nerdtree-git-plugin'
+"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " py syntax highlight
+"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+"Plug 'hkupty/iron.nvim',  {'branch': 'direct-invoke'}    " repl w/ fix #162
+"Plug 'christoomey/vim-tmux-navigator'                   " interphere w/ NERDTreeToggle <c-\>
+Plug 'morhetz/gruvbox'                                   " colorscheme that came w/ init.vim
+"Plug 'HerringtonDarkholme/yats.vim' " TypeScript Syntax
+" Initialize plugin system
+Plug 'rittelle/vim-repl'
+
+scoop install miniconda3
+$HOME/scoop/apps/miniconda3/current/etc/profile.d/conda.sh
+yelle@DESKTOP-HVTKHAO MINGW64 ~
